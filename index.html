@@ -1,0 +1,668 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#210d20">
+<title>A Surprise For Mim</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100svh;
+    background: #190b18;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    background:
+        linear-gradient(rgba(24,5,20,.60),rgba(24,5,20,.76)),
+        url('https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=2000&q=90')
+        center/cover no-repeat;
+}
+
+.glow {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background: radial-gradient(
+        circle at 50% 40%,
+        rgba(255,100,160,.18),
+        transparent 55%
+    );
+}
+
+.container {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 18px 65px;
+}
+
+.page {
+    display: none;
+    width: 100%;
+    max-width: 650px;
+    text-align: center;
+    animation: appear .8s ease both;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tag {
+    color: #ffc0d7;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.script {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(65px,14vw,105px);
+    font-weight: 400;
+    color: #ffd3e3;
+    text-shadow: 0 0 30px rgba(255,120,170,.5);
+    line-height: 1.25;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(23px,5vw,36px);
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 18px 0;
+}
+
+p {
+    color: #f5dce8;
+    font-size: 14px;
+    line-height: 2;
+    font-weight: 300;
+}
+
+.heart {
+    display: inline-block;
+    width: 65px;
+    height: 65px;
+    margin: 20px 0;
+    background: #ff7eaa;
+    transform: rotate(-45deg);
+    position: relative;
+    animation: heartbeat 1.4s infinite;
+    filter: drop-shadow(0 0 20px #ff609b);
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    width: 65px;
+    height: 65px;
+    position: absolute;
+    background: #ff7eaa;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -32px;
+    left: 0;
+}
+
+.heart::after {
+    left: 32px;
+    top: 0;
+}
+
+@keyframes heartbeat {
+    0%,100% { transform: rotate(-45deg) scale(1); }
+    50% { transform: rotate(-45deg) scale(1.18); }
+}
+
+.card {
+    max-width: 520px;
+    margin: 25px auto;
+    padding: 32px 25px;
+    border: 1px solid rgba(255,210,230,.25);
+    border-radius: 22px;
+    background: rgba(255,235,245,.09);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.card p {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    line-height: 2;
+}
+
+.funny {
+    display: inline-block;
+    background: rgba(255,180,210,.13);
+    border: 1px solid rgba(255,200,220,.2);
+    padding: 10px 17px;
+    border-radius: 30px;
+    color: #ffd6e5;
+    font-size: 12px;
+    margin-top: 18px;
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: .3s ease;
+}
+
+.main-btn {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 16px 32px;
+    border-radius: 50px;
+    color: white;
+    background: linear-gradient(135deg,#ff8db5,#d94379);
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 8px 30px rgba(255,75,135,.35);
+}
+
+.main-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(255,75,135,.55);
+}
+
+.main-btn:active {
+    transform: scale(.96);
+}
+
+.proposal {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(50px,11vw,82px);
+    color: #ffb9d2;
+    margin: 15px 0;
+    text-shadow: 0 0 25px rgba(255,90,150,.6);
+}
+
+.answer-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.answer-buttons button {
+    width: min(100%,320px);
+    padding: 16px 20px;
+    border-radius: 50px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    background: linear-gradient(135deg,#ff8db5,#d94379);
+    box-shadow: 0 8px 25px rgba(255,75,135,.3);
+}
+
+.answer-buttons button:last-child {
+    background: rgba(255,220,235,.12);
+    border: 1px solid rgba(255,200,220,.4);
+}
+
+.answer-buttons button:hover {
+    transform: scale(1.04);
+}
+
+/* Floating CSS hearts */
+
+.particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.particle {
+    position: absolute;
+    bottom: -30px;
+    width: 12px;
+    height: 12px;
+    background: #ff8db5;
+    transform: rotate(-45deg);
+    animation: floatUp linear forwards;
+    opacity: .8;
+}
+
+.particle::before,
+.particle::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: inherit;
+    border-radius: 50%;
+}
+
+.particle::before {
+    top: -6px;
+    left: 0;
+}
+
+.particle::after {
+    top: 0;
+    left: 6px;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-115svh) rotate(315deg);
+        opacity: 0;
+    }
+}
+
+/* Confetti */
+
+#confetti {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.footer {
+    position: fixed;
+    bottom: 17px;
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: rgba(255,220,235,.6);
+    pointer-events: none;
+}
+
+@media(max-width:600px) {
+    .container {
+        padding: 25px 18px 60px;
+    }
+
+    .tag {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    .script {
+        font-size: clamp(65px,18vw,90px);
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .card {
+        padding: 25px 19px;
+        border-radius: 18px;
+    }
+
+    .card p {
+        font-size: 15px;
+    }
+
+    .main-btn {
+        width: min(100%,310px);
+        padding: 16px 18px;
+        font-size: 13px;
+    }
+
+    .footer {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+<div class="glow"></div>
+<div class="particles" id="particles"></div>
+<canvas id="confetti"></canvas>
+
+<main class="container">
+
+    <!-- STEP 1 -->
+
+    <section class="page active" id="page1">
+
+        <div class="tag">A Little Surprise For You</div>
+
+        <h1 class="script">Hey Mim!</h1>
+
+        <div class="heart"></div>
+
+        <h2>তোমাকে একটা Secret কথা বলার আছে! 👀</h2>
+
+
+
+        <div class="funny">
+            But first, I need your attention. 😊
+        </div>
+
+        <br>
+
+        <button class="main-btn" onclick="showPage(2)">
+            Secret টা জানতে এখানে ক্লিক করো
+        </button>
+
+    </section>
+
+
+    <!-- STEP 2 -->
+
+    <section class="page" id="page2">
+
+        <div class="tag">Something Special</div>
+
+        <div class="heart"></div>
+
+        <h1 class="script">One More Thing...</h1>
+
+        <h2>কথাটা কিন্তু একটু স্পেশাল... সবার জন্য নয়! 🙈</h2>
+
+        <p>
+            অনেকদিন ধরেই ভাবছি কীভাবে কথাটা বলব।
+            অবশেষে একটা উপায় খুঁজে পেয়েছি!
+        </p>
+
+  
+
+        <br>
+
+        <button class="main-btn" onclick="showPage(3)">
+            স্পেশাল কথাটা শুনতে চাইলে ক্লিক করো
+        </button>
+
+    </section>
+
+
+    <!-- STEP 3 : FINAL PROPOSAL -->
+
+    <section class="page" id="page3">
+
+        <div class="tag">A Little Confession</div>
+
+        <div class="heart"></div>
+
+        <h2>অনেক ঘুরিয়ে-পেঁচিয়ে লাভ নেই...</h2>
+
+   
+
+        <div class="proposal">
+            Mim...
+        </div>
+
+        <h2>Will You Be Mine? ❤️</h2>
+
+  
+
+        <div class="answer-buttons">
+
+            <button onclick="celebrate(1)">
+                Yes!
+            </button>
+
+            <button onclick="celebrate(2)">
+                Of Course, Yes!
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- CELEBRATION -->
+
+    <section class="page" id="page4">
+
+        <div class="tag">The Best Moment Ever</div>
+
+        <div class="heart"></div>
+
+        <h1 class="script" id="resultTitle">
+            Yaaay Mim!
+        </h1>
+
+        <h2 id="resultMessage">
+            You Just Made My Day!
+        </h2>
+
+        <div class="card">
+
+            <p>
+                I don't know what the future holds,
+                but I know that I want to make
+                beautiful memories with you.
+
+                <br><br>
+
+                Thank you for making this moment
+                so special.
+
+                <br><br>
+
+                Here's to a beautiful beginning.
+            </p>
+
+        </div>
+
+        <div class="proposal">
+            I Love You, Mim!
+        </div>
+
+        <p>Made with love, just for you.</p>
+
+    </section>
+
+</main>
+
+<div class="footer">
+    MADE WITH LOVE • EXCLUSIVELY FOR MIM
+</div>
+
+
+<script>
+
+// PAGE NAVIGATION
+
+function showPage(number) {
+
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+
+    document.getElementById('page' + number).classList.add('active');
+
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+
+// FLOATING HEARTS
+
+function createParticle() {
+
+    const particle = document.createElement('div');
+
+    particle.className = 'particle';
+
+    particle.style.left = Math.random() * 100 + 'vw';
+
+    particle.style.animationDuration =
+        (6 + Math.random() * 7) + 's';
+
+    particle.style.opacity =
+        (0.3 + Math.random() * 0.6);
+
+    particle.style.background = [
+        '#ff8db5',
+        '#ffd6e4',
+        '#ffb1cc'
+    ][Math.floor(Math.random() * 3)];
+
+    document.getElementById('particles').appendChild(particle);
+
+    setTimeout(() => particle.remove(), 14000);
+}
+
+setInterval(createParticle, 450);
+
+
+// YES CELEBRATION
+
+function celebrate(choice) {
+
+    showPage(4);
+
+    const title = document.getElementById('resultTitle');
+
+    const message = document.getElementById('resultMessage');
+
+    if(choice === 1) {
+
+        title.innerHTML = 'Yaaay Mim!';
+
+        message.innerHTML =
+            'You Just Made My Day A Million Times Better!';
+
+    } else {
+
+        title.innerHTML = 'Awww Mim!';
+
+        message.innerHTML =
+            'I Knew You Would Make Me This Happy!';
+
+    }
+
+    launchConfetti();
+
+    for(let i = 0; i < 80; i++) {
+        setTimeout(createParticle, i * 40);
+    }
+}
+
+
+// CONFETTI ANIMATION
+
+function launchConfetti() {
+
+    const canvas = document.getElementById('confetti');
+
+    const ctx = canvas.getContext('2d');
+
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const ratio = window.devicePixelRatio || 1;
+
+    canvas.width = width * ratio;
+    canvas.height = height * ratio;
+
+    ctx.setTransform(ratio,0,0,ratio,0,0);
+
+    const colors = [
+        '#ff8db5',
+        '#ffd6e4',
+        '#ffffff',
+        '#ffcf70',
+        '#e96a9a'
+    ];
+
+    const pieces = [];
+
+    for(let i = 0; i < 180; i++) {
+
+        pieces.push({
+            x: Math.random() * width,
+            y: -Math.random() * height,
+            size: 4 + Math.random() * 7,
+            speed: 2 + Math.random() * 5,
+            rotation: Math.random() * 360,
+            color: colors[Math.floor(Math.random() * colors.length)]
+        });
+
+    }
+
+    let frame = 0;
+
+    function animate() {
+
+        ctx.clearRect(0,0,width,height);
+
+        pieces.forEach(p => {
+
+            p.y += p.speed;
+            p.rotation += 4;
+
+            ctx.save();
+
+            ctx.translate(p.x,p.y);
+
+            ctx.rotate(p.rotation * Math.PI / 180);
+
+            ctx.fillStyle = p.color;
+
+            ctx.fillRect(
+                -p.size/2,
+                -p.size/2,
+                p.size,
+                p.size
+            );
+
+            ctx.restore();
+
+        });
+
+        frame++;
+
+        if(frame < 250) {
+            requestAnimationFrame(animate);
+        } else {
+            ctx.clearRect(0,0,width,height);
+        }
+
+    }
+
+    animate();
+}
+
+</script>
+
+</body>
+</html>
