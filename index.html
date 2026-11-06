@@ -1,11 +1,25 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#210d20">
-<title>A Surprise For Mim</title>
+<title>মিমের জন্য একটি ছোট্ট চমক</title>
+
+<!-- Messenger / Facebook Link Preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="মিম, তোমার জন্য একটা ছোট্ট চমক!">
+<meta property="og:description" content="তোমাকে একটা বিশেষ কথা বলার আছে... পুরোটা দেখতে লিংকে ক্লিক করো।">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=1200&h=630&q=90">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A soft romantic pink floral background">
+<meta property="og:url" content="https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="মিম, তোমার জন্য একটা ছোট্ট চমক!">
+<meta name="twitter:description" content="তোমাকে একটা বিশেষ কথা বলার আছে... পুরোটা দেখতে লিংকে ক্লিক করো।">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=1200&h=630&q=90">
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -371,8 +385,6 @@ button {
 
         <h2>তোমাকে একটা Secret কথা বলার আছে! 👀</h2>
 
-
-
         <div class="funny">
             But first, I need your attention. 😊
         </div>
@@ -403,8 +415,6 @@ button {
             অবশেষে একটা উপায় খুঁজে পেয়েছি!
         </p>
 
-  
-
         <br>
 
         <button class="main-btn" onclick="showPage(3)">
@@ -424,15 +434,11 @@ button {
 
         <h2>অনেক ঘুরিয়ে-পেঁচিয়ে লাভ নেই...</h2>
 
-   
-
         <div class="proposal">
             Mim...
         </div>
 
         <h2>Will You Be Mine? ❤️</h2>
-
-  
 
         <div class="answer-buttons">
 
@@ -441,7 +447,7 @@ button {
             </button>
 
             <button onclick="celebrate(2)">
-                Of Course, Yes!
+                Of course, yes!
             </button>
 
         </div>
@@ -458,37 +464,37 @@ button {
         <div class="heart"></div>
 
         <h1 class="script" id="resultTitle">
-            Yaaay Mim!
+            ইয়েই! মিম!
         </h1>
 
         <h2 id="resultMessage">
-            You Just Made My Day!
+            তুমি আমার দিনটা সুন্দর করে দিলে!
         </h2>
 
         <div class="card">
 
             <p>
-                I don't know what the future holds,
-                but I know that I want to make
-                beautiful memories with you.
+                ভবিষ্যতে কী আছে, তা আমি জানি না।
+                তবে তোমার সঙ্গে অনেক সুন্দর স্মৃতি
+                তৈরি করতে চাই।
 
                 <br><br>
 
-                Thank you for making this moment
-                so special.
+                এই মুহূর্তটাকে এতটা বিশেষ করে তোলার
+                জন্য তোমাকে ধন্যবাদ।
 
                 <br><br>
 
-                Here's to a beautiful beginning.
+                আমাদের সুন্দর এক শুরুর অপেক্ষায়।
             </p>
 
         </div>
 
         <div class="proposal">
-            I Love You, Mim!
+            তোমাকে ভালোবাসি, মিম!
         </div>
 
-        <p>Made with love, just for you.</p>
+        <p>শুধু তোমার জন্য, অনেক ভালোবাসা দিয়ে তৈরি।</p>
 
     </section>
 
@@ -557,17 +563,17 @@ function celebrate(choice) {
 
     if(choice === 1) {
 
-        title.innerHTML = 'Yaaay Mim!';
+        title.innerHTML = 'মিম!';
 
         message.innerHTML =
-            'You Just Made My Day A Million Times Better!';
+            'তুমি আমার দিনটা অসাধারণ সুন্দর করে দিলে!';
 
     } else {
 
-        title.innerHTML = 'Awww Mim!';
+        title.innerHTML = 'আহ, মিম!';
 
         message.innerHTML =
-            'I Knew You Would Make Me This Happy!';
+            'জানতাম, তুমি আমাকে এতটা খুশি করবে!';
 
     }
 
